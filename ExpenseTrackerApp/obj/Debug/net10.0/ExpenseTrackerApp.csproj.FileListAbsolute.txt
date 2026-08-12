@@ -1,0 +1,15 @@
+/workspaces/c-praticals-/ExpenseTrackerApp/bin/Debug/net10.0/ExpenseTrackerApp
+/workspaces/c-praticals-/ExpenseTrackerApp/bin/Debug/net10.0/ExpenseTrackerApp.deps.json
+/workspaces/c-praticals-/ExpenseTrackerApp/bin/Debug/net10.0/ExpenseTrackerApp.runtimeconfig.json
+/workspaces/c-praticals-/ExpenseTrackerApp/bin/Debug/net10.0/ExpenseTrackerApp.dll
+/workspaces/c-praticals-/ExpenseTrackerApp/bin/Debug/net10.0/ExpenseTrackerApp.pdb
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ExpenseTrackerApp.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ExpenseTrackerApp.AssemblyInfoInputs.cache
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ExpenseTrackerApp.AssemblyInfo.cs
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ExpenseTrackerApp.csproj.CoreCompileInputs.cache
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ExpenseTrackerApp.sourcelink.json
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ExpenseTrackerApp.dll
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/refint/ExpenseTrackerApp.dll
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ExpenseTrackerApp.pdb
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ExpenseTrackerApp.genruntimeconfig.cache
+/workspaces/c-praticals-/ExpenseTrackerApp/obj/Debug/net10.0/ref/ExpenseTrackerApp.dll
