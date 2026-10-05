@@ -1,0 +1,38 @@
+@model IEnumerable<ProductCatalogMVC.Models.Product>
+
+@{
+    ViewData["Title"] = "Product Catalog";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-4">Our Products</h1>
+    <p class="lead">Browse our exclusive collection of high-quality items.</p>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill"></i> @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.Category</h6>
+                    <p class="card-text text-truncate">@item.Description</p>
+                    <h5 class="text-success">$@item.Price.ToString("0.00")</h5>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary w-100">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
