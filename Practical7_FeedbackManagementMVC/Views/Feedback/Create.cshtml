@@ -1,0 +1,125 @@
+@model Practical7_FeedbackManagementMVC.Models.Feedback
+
+@{
+    ViewData["Title"] = "Submit Feedback";
+    var categories = ViewBag.Categories as List<string> ?? new List<string>();
+    var categorySelectList = new SelectList(categories);
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="form-card">
+            <!-- Form Header -->
+            <div class="d-flex align-items-center gap-3 mb-4 pb-3 border-bottom">
+                <div class="rounded-circle bg-primary bg-opacity-10 p-3 text-primary fs-3">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+                <div>
+                    <h3 class="fw-bold mb-1 text-dark">Submit Academic Feedback</h3>
+                    <p class="text-muted mb-0 small">Please share your honest ratings and feedback to help us improve.</p>
+                </div>
+            </div>
+
+            <!-- Validation Summary (HTML Helper) -->
+            @if (!ViewData.ModelState.IsValid)
+            {
+                @Html.ValidationSummary(false, "Please correct the following errors before submitting:", new { @class = "validation-summary-errors" })
+            }
+
+            <!-- Feedback Submission Form -->
+            <form asp-action="Create" method="post" id="feedbackForm" novalidate>
+                @Html.AntiForgeryToken()
+
+                <!-- Full Name (HTML Helper) -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.FullName, new { @class = "form-label fw-semibold text-dark" })
+                    <div class="input-group">
+                        <span class="input-group-text bg-light text-muted"><i class="bi bi-person"></i></span>
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "e.g., Gandu Arunteja", required = "required" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "field-validation-error" })
+                </div>
+
+                <!-- Email Address (HTML Helper) -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Email, new { @class = "form-label fw-semibold text-dark" })
+                    <div class="input-group">
+                        <span class="input-group-text bg-light text-muted"><i class="bi bi-envelope"></i></span>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "name@student.marwadiuniversity.ac.in", required = "required" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "field-validation-error" })
+                </div>
+
+                <!-- Feedback Category (HTML Helper Dropdown) -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Category, new { @class = "form-label fw-semibold text-dark" })
+                    <div class="input-group">
+                        <span class="input-group-text bg-light text-muted"><i class="bi bi-tag"></i></span>
+                        @Html.DropDownListFor(m => m.Category, categorySelectList, "-- Select a Feedback Category --", new { @class = "form-select", required = "required" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Category, "", new { @class = "field-validation-error" })
+                </div>
+
+                <!-- Rating Radio Buttons (1 to 5 Stars) -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Rating, new { @class = "form-label fw-semibold text-dark d-block" })
+                    <div class="p-3 bg-light rounded-3 border d-flex justify-content-around align-items-center">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <div class="form-check form-check-inline text-center m-0">
+                                <input class="form-check-input" type="radio" asp-for="Rating" value="@i" id="rating_@i" />
+                                <label class="form-check-label d-block text-warning fw-bold cursor-pointer" for="rating_@i">
+                                    @i <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                        }
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "field-validation-error" })
+                </div>
+
+                <!-- Comments (HTML Helper Textarea) -->
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        @Html.LabelFor(m => m.Comments, new { @class = "form-label fw-semibold text-dark mb-1" })
+                        <small class="text-muted" id="charCount">0 / 500 characters</small>
+                    </div>
+                    @Html.TextAreaFor(m => m.Comments, new { @class = "form-control", rows = 4, placeholder = "Explain your feedback in detail (at least 10 characters)...", maxlength = 500, id = "commentsBox" })
+                    @Html.ValidationMessageFor(m => m.Comments, "", new { @class = "field-validation-error" })
+                </div>
+
+                <!-- Recommendation Checkbox (HTML Helper) -->
+                <div class="form-check form-switch mb-4 p-3 bg-light rounded-3 border ps-5">
+                    @Html.CheckBoxFor(m => m.WouldRecommend, new { @class = "form-check-input ms-n4", role = "switch", id = "recommendSwitch" })
+                    <label class="form-check-label fw-semibold text-dark" for="recommendSwitch">
+                        I recommend this course / department to other students
+                    </label>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex gap-3 align-items-center pt-2 border-top">
+                    <button type="submit" class="btn btn-primary-custom flex-grow-1 py-3">
+                        <i class="bi bi-send-check-fill me-2"></i>Submit Feedback
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary px-4 py-3 rounded-3">
+                        <i class="bi bi-arrow-left me-1"></i>Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Character counter for comments textarea
+        const commentsBox = document.getElementById('commentsBox');
+        const charCount = document.getElementById('charCount');
+        if (commentsBox && charCount) {
+            commentsBox.addEventListener('input', function() {
+                charCount.textContent = `${this.value.length} / 500 characters`;
+            });
+            charCount.textContent = `${commentsBox.value.length} / 500 characters`;
+        }
+    </script>
+}

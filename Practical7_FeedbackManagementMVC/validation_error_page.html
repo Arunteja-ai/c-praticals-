@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit Feedback - Feedback Management Module</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar-custom {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            box-shadow: 0 4px 20px -2px rgba(30, 58, 138, 0.25);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff !important;
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            padding: 8px 16px !important;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .footer-custom {
+            background-color: #0f172a;
+            color: #94a3b8;
+            margin-top: auto;
+        }
+        .stat-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        .feedback-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .feedback-card:hover {
+            border-color: #93c5fd;
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.12);
+        }
+        .rating-stars {
+            color: #f59e0b;
+        }
+        .form-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+            padding: 36px;
+        }
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            border: none;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            color: white;
+            transition: all 0.2s ease;
+        }
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+            color: white;
+        }
+        .field-validation-error {
+            color: #dc2626;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 4px;
+            display: block;
+        }
+        .input-validation-error {
+            border-color: #dc2626 !important;
+            background-color: #fef2f2 !important;
+        }
+        .validation-summary-errors {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+            color: #991b1b;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .validation-summary-errors ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header b-lkj37soi43>
+        <nav b-lkj37soi43 class="navbar navbar-expand-lg navbar-custom py-3">
+            <div b-lkj37soi43 class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                    <i b-lkj37soi43 class="bi bi-chat-heart-fill fs-3 text-warning"></i>
+                    <span b-lkj37soi43>Marwadi University <span b-lkj37soi43 class="badge bg-warning text-dark fs-6 ms-1">NAAC A+</span></span>
+                </a>
+                <button b-lkj37soi43 class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-lkj37soi43 class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                </button>
+                <div b-lkj37soi43 class="collapse navbar-collapse" id="navbarContent">
+                    <ul b-lkj37soi43 class="navbar-nav ms-auto align-items-center gap-2">
+                        <li b-lkj37soi43 class="nav-item">
+                            <a class="nav-link" href="/">
+                                <i b-lkj37soi43 class="bi bi-speedometer2 me-1"></i> Dashboard
+                            </a>
+                        </li>
+                        <li b-lkj37soi43 class="nav-item">
+                            <a class="nav-link" href="/Feedback/Create">
+                                <i b-lkj37soi43 class="bi bi-plus-circle-fill me-1"></i> Submit Feedback
+                            </a>
+                        </li>
+                        <li b-lkj37soi43 class="nav-item">
+                            <a b-lkj37soi43 class="nav-link btn btn-outline-light text-white px-3 py-1 ms-2" href="https://github.com/Arunteja-ai/c-praticals-" target="_blank">
+                                <i b-lkj37soi43 class="bi bi-github me-1"></i> GitHub Repo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div b-lkj37soi43 class="container my-4 flex-grow-1">
+        <main b-lkj37soi43 role="main">
+            
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="form-card">
+            <!-- Form Header -->
+            <div class="d-flex align-items-center gap-3 mb-4 pb-3 border-bottom">
+                <div class="rounded-circle bg-primary bg-opacity-10 p-3 text-primary fs-3">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+                <div>
+                    <h3 class="fw-bold mb-1 text-dark">Submit Academic Feedback</h3>
+                    <p class="text-muted mb-0 small">Please share your honest ratings and feedback to help us improve.</p>
+                </div>
+            </div>
+
+            <!-- Validation Summary (HTML Helper) -->
+            <div class="validation-summary-errors validation-summary-errors" data-valmsg-summary="true"><span>Please correct the following errors before submitting:</span>
+<ul><li>Full Name is required.</li>
+<li>Please enter a valid email address.</li>
+<li>Please select a feedback category.</li>
+<li>Rating must be between 1 and 5 stars.</li>
+<li>Comments must be between 10 and 500 characters.</li>
+</ul></div>
+
+            <!-- Feedback Submission Form -->
+            <form method="post" id="feedbackForm" novalidate action="/Feedback/Create">
+                
+
+                <!-- Full Name (HTML Helper) -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-dark" for="FullName">Student / Full Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light text-muted"><i class="bi bi-person"></i></span>
+                        <input class="form-control input-validation-error" data-val="true" data-val-length="Name must be between 3 and 50 characters." data-val-length-max="50" data-val-length-min="3" data-val-required="Full Name is required." id="FullName" maxlength="50" name="FullName" placeholder="e.g., Gandu Arunteja" required="required" type="text" value="" />
+                    </div>
+                    <span class="field-validation-error field-validation-error" data-valmsg-for="FullName" data-valmsg-replace="true">Full Name is required.</span>
+                </div>
+
+                <!-- Email Address (HTML Helper) -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-dark" for="Email">Email Address</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light text-muted"><i class="bi bi-envelope"></i></span>
+                        <input class="form-control input-validation-error" data-val="true" data-val-email="Please enter a valid email address." data-val-required="Email address is required." id="Email" name="Email" placeholder="name@student.marwadiuniversity.ac.in" required="required" type="email" value="invalid-email" />
+                    </div>
+                    <span class="field-validation-error field-validation-error" data-valmsg-for="Email" data-valmsg-replace="true">Please enter a valid email address.</span>
+                </div>
+
+                <!-- Feedback Category (HTML Helper Dropdown) -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-dark" for="Category">Feedback Category</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light text-muted"><i class="bi bi-tag"></i></span>
+                        <select class="form-select input-validation-error" data-val="true" data-val-required="Please select a feedback category." id="Category" name="Category" required="required"><option value="">-- Select a Feedback Category --</option>
+<option>Course Curriculum</option>
+<option>Faculty &amp; Teaching</option>
+<option>Lab &amp; Infrastructure</option>
+<option>Campus Facilities</option>
+<option>General Feedback</option>
+</select>
+                    </div>
+                    <span class="field-validation-error field-validation-error" data-valmsg-for="Category" data-valmsg-replace="true">Please select a feedback category.</span>
+                </div>
+
+                <!-- Rating Radio Buttons (1 to 5 Stars) -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-dark d-block" for="Rating">Overall Rating (1 - 5)</label>
+                    <div class="p-3 bg-light rounded-3 border d-flex justify-content-around align-items-center">
+                            <div class="form-check form-check-inline text-center m-0">
+                                <input class="form-check-input input-validation-error" type="radio" value="1" id="rating_1" data-val="true" data-val-range="Rating must be between 1 and 5 stars." data-val-range-max="5" data-val-range-min="1" data-val-required="Rating is required." name="Rating" />
+                                <label class="form-check-label d-block text-warning fw-bold cursor-pointer" for="rating_1">
+                                    1 <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline text-center m-0">
+                                <input class="form-check-input input-validation-error" type="radio" value="2" id="rating_2" name="Rating" />
+                                <label class="form-check-label d-block text-warning fw-bold cursor-pointer" for="rating_2">
+                                    2 <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline text-center m-0">
+                                <input class="form-check-input input-validation-error" type="radio" value="3" id="rating_3" name="Rating" />
+                                <label class="form-check-label d-block text-warning fw-bold cursor-pointer" for="rating_3">
+                                    3 <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline text-center m-0">
+                                <input class="form-check-input input-validation-error" type="radio" value="4" id="rating_4" name="Rating" />
+                                <label class="form-check-label d-block text-warning fw-bold cursor-pointer" for="rating_4">
+                                    4 <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline text-center m-0">
+                                <input class="form-check-input input-validation-error" type="radio" value="5" id="rating_5" name="Rating" />
+                                <label class="form-check-label d-block text-warning fw-bold cursor-pointer" for="rating_5">
+                                    5 <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                    </div>
+                    <span class="field-validation-error field-validation-error" data-valmsg-for="Rating" data-valmsg-replace="true">Rating must be between 1 and 5 stars.</span>
+                </div>
+
+                <!-- Comments (HTML Helper Textarea) -->
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label class="form-label fw-semibold text-dark mb-1" for="Comments">Your Detailed Feedback</label>
+                        <small class="text-muted" id="charCount">0 / 500 characters</small>
+                    </div>
+                    <textarea class="form-control input-validation-error" data-val="true" data-val-length="Comments must be between 10 and 500 characters." data-val-length-max="500" data-val-length-min="10" data-val-required="Feedback comments are required." id="commentsBox" maxlength="500" name="Comments" placeholder="Explain your feedback in detail (at least 10 characters)..." rows="4">
+too short</textarea>
+                    <span class="field-validation-error field-validation-error" data-valmsg-for="Comments" data-valmsg-replace="true">Comments must be between 10 and 500 characters.</span>
+                </div>
+
+                <!-- Recommendation Checkbox (HTML Helper) -->
+                <div class="form-check form-switch mb-4 p-3 bg-light rounded-3 border ps-5">
+                    <input checked="checked" class="form-check-input ms-n4" data-val="true" data-val-required="The Would you recommend this course / facility to others? field is required." id="recommendSwitch" name="WouldRecommend" role="switch" type="checkbox" value="true" />
+                    <label class="form-check-label fw-semibold text-dark" for="recommendSwitch">
+                        I recommend this course / department to other students
+                    </label>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex gap-3 align-items-center pt-2 border-top">
+                    <button type="submit" class="btn btn-primary-custom flex-grow-1 py-3">
+                        <i class="bi bi-send-check-fill me-2"></i>Submit Feedback
+                    </button>
+                    <a class="btn btn-outline-secondary px-4 py-3 rounded-3" href="/">
+                        <i class="bi bi-arrow-left me-1"></i>Cancel
+                    </a>
+                </div>
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8FzVeZN1YVNMilr5TCE4CUZSLKEGhRvan0o6PAABLtv72uArXScFLccNxeDAzR2IdesvLD-ol1GKwMDrnCFfZf1QLDNMYrX1mWPMAaBANi4vLhIsl7zCjbz2q4i2IUBT5cMXFRXlTq7M3zXmiLfW0Kc" /><input name="WouldRecommend" type="hidden" value="false" /></form>
+        </div>
+    </div>
+</div>
+
+
+        </main>
+    </div>
+
+    <footer b-lkj37soi43 class="footer-custom py-4 border-top">
+        <div b-lkj37soi43 class="container text-center text-md-start">
+            <div b-lkj37soi43 class="row align-items-center">
+                <div b-lkj37soi43 class="col-md-6 mb-2 mb-md-0">
+                    <h6 b-lkj37soi43 class="text-white mb-1">FACULTY OF ENGINEERING AND TECHNOLOGY</h6>
+                    <p b-lkj37soi43 class="small text-muted mb-0">Department of Computer Science and Engineering | 01CE1523 - .NET Technologies</p>
+                </div>
+                <div b-lkj37soi43 class="col-md-6 text-md-end">
+                    <span b-lkj37soi43 class="badge bg-primary px-3 py-2 fs-7">
+                        <i b-lkj37soi43 class="bi bi-person-fill"></i> Gandu Arunteja | Enrolment: 92400120612 | Class: 5Ev6 | Batch: A
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- jQuery & Validation Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+    
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        // Character counter for comments textarea
+        const commentsBox = document.getElementById('commentsBox');
+        const charCount = document.getElementById('charCount');
+        if (commentsBox && charCount) {
+            commentsBox.addEventListener('input', function() {
+                charCount.textContent = `${this.value.length} / 500 characters`;
+            });
+            charCount.textContent = `${commentsBox.value.length} / 500 characters`;
+        }
+    </script>
+
+</body>
+</html>

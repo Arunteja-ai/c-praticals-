@@ -1,0 +1,57 @@
+@model Practical7_FeedbackManagementMVC.Models.FeedbackDashboardViewModel
+
+<div class="row g-4 mb-4">
+    <!-- Stat 1: Total Feedbacks -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-primary bg-opacity-10 p-3 text-primary fs-3">
+                <i class="bi bi-chat-square-text-fill"></i>
+            </div>
+            <div>
+                <p class="text-muted small mb-0 fw-semibold text-uppercase">Total Feedbacks</p>
+                <h3 class="fw-bold mb-0 text-dark">@Model.TotalCount</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 2: Average Rating -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-warning bg-opacity-10 p-3 text-warning fs-3">
+                <i class="bi bi-star-fill"></i>
+            </div>
+            <div>
+                <p class="text-muted small mb-0 fw-semibold text-uppercase">Average Rating</p>
+                <h3 class="fw-bold mb-0 text-dark">
+                    @Model.AverageRating <span class="fs-6 text-muted fw-normal">/ 5.0</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 3: Positive Feedback -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-success bg-opacity-10 p-3 text-success fs-3">
+                <i class="bi bi-hand-thumbs-up-fill"></i>
+            </div>
+            <div>
+                <p class="text-muted small mb-0 fw-semibold text-uppercase">Positive (4★ - 5★)</p>
+                <h3 class="fw-bold mb-0 text-dark">@Model.PositiveFeedbackCount</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 4: Would Recommend % -->
+    <div class="col-sm-6 col-lg-3">
+        <div class="stat-card d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-info bg-opacity-10 p-3 text-info fs-3">
+                <i class="bi bi-heart-pulse-fill"></i>
+            </div>
+            <div>
+                <p class="text-muted small mb-0 fw-semibold text-uppercase">Recommend Rate</p>
+                <h3 class="fw-bold mb-0 text-dark">@Model.RecommendPercentage%</h3>
+            </div>
+        </div>
+    </div>
+</div>
